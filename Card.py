@@ -1,7 +1,11 @@
 class Card:
-    def _init_(self,rank,value,symbole):
+    def _init_(self,rank,symbol):
         self.rank = rank
-        self.value = value
+        try: self.value = int(rank)
+        except:
+            if rank != 'As':
+                self.value = 10
+            else: self.value = 'As'
         self.symbol = symbol
 
 
