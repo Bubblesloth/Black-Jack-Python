@@ -18,7 +18,3 @@ class Deck:
 
     def getCards(self):
         return self.cards
-
-deck = Deck()
-print(deck.getCards())
-pile.afficher(deck.cards)
