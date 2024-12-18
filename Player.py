@@ -1,5 +1,6 @@
 class Player:
-    def _init_(self):
+    mise = input("Combien voulez vous miser ?(La mise minimale est de 10)")
+    def __init__(self):
         self.hand = []
 
 
