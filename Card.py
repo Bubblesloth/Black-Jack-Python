@@ -1,4 +1,5 @@
 class Card:
+
     def __init__(self,rank,symbol):
         self.rank = rank
         try: self.value = int(rank)
@@ -8,6 +9,8 @@ class Card:
             else: self.value = 'As'
         self.symbol = symbol
 
+    def __repr__(self):
+        return f'{self.rank},{self.symbol},{self.value}'
 
 
 
