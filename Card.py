@@ -1,5 +1,5 @@
 class Card:
-    def _init_(self,rank,symbol):
+    def __init__(self,rank,symbol):
         self.rank = rank
         try: self.value = int(rank)
         except:

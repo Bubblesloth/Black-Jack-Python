@@ -3,5 +3,8 @@ class Player:
     def __init__(self):
         self.hand = []
 
+croupier = Player()
+player = Player()
+
 
 
