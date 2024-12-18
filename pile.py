@@ -21,14 +21,3 @@ def afficher(p):
         temp.empiler(elt)
     while not temp.est_vide():
         p.empiler(temp.depiler())
-
-
-
-
-p = Pile()
-p.empiler(1)
-p.empiler(2)
-p.empiler(3)
-afficher(p)
-
-
