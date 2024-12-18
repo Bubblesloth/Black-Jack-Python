@@ -18,3 +18,10 @@ class Deck:
 
     def getCards(self):
         return self.cards
+
+    def defausser(self):
+        return self.getCards().depiler()
+
+'''deck = Deck()
+pile.afficher(deck.cards)
+print(deck.defausser())'''
