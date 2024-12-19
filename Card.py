@@ -10,7 +10,7 @@ class Card:
         self.symbol = symbol
 
     def __repr__(self):
-        return f'{self.rank},{self.symbol},{self.value}'
+        return f'||{self.rank},{self.symbol},{self.value}||'
 
 
 

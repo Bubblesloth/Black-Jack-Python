@@ -22,6 +22,8 @@ class Deck:
     def defausser(self):
         return self.getCards().depiler()
 
-'''deck = Deck()
+
+
+deck = Deck()
 pile.afficher(deck.cards)
-print(deck.defausser())'''
+print(deck.defausser())
