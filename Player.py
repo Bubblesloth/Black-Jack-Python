@@ -1,5 +1,4 @@
 from Deck import *
-
 class Player:
 
     def __init__(self):
@@ -17,8 +16,6 @@ class Player:
 
     def getHand(self):
         return self.hand
-
-
 
 
 
