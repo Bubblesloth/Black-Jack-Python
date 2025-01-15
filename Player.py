@@ -20,5 +20,11 @@ class Player:
     def getHand(self):
         return self.hand
 
+    def resetHand(self):
+        self.hand = []
+        self.score = 0
+        self.lendeck = 0
+
+
 
 
