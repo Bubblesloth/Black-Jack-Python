@@ -33,7 +33,11 @@ class BlackJack:
         if croupier.score > 21:
             partie = False
 
-    print('Partie Finie')
+    if partie == False:
+        print('Partie Finie')
+        croupier.resetHand
+        player.resetHand
+
 
 
 
