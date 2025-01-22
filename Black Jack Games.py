@@ -8,7 +8,7 @@ class BlackJack:
     player1 = Player()
     deck = Deck()
     partie = True
-
+    mise = input(f"combien voulez vous miser? Votre solde actuel est de {player1.points}$.")
     #Tests
     print('------')
     print(player1.getHand())
@@ -30,7 +30,7 @@ class BlackJack:
             croupier.tirer(deck)
             print(f'La croupier a tiré {croupier.getHand()[croupier.lendeck-1]}, il a désormais {croupier.score} points\n')
 
-        if croupier.score == 21:
+        if croupier.score > 21:
             partie = False
 
     print('Partie Finie')
