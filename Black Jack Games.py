@@ -26,18 +26,21 @@ class BlackJack:
     while partie==True :
         print('Début de la partie\n')
 
-        #while croupier.score < 17:
-        croupier.tirer(deck)
-        print(f'La croupier a tiré {croupier.getHand()[croupier.lendeck-1]}, il a désormais {croupier.score} points\n')
-
-        if croupier.score > 21:
-            partie = False
+        while croupier.score < 17:
+            croupier.tirer(deck)
+            print(f'La croupier a tiré {croupier.getHand()[croupier.lendeck-1]}, il a désormais {croupier.score} points\n')
+            player1.tirer(deck)
+            if croupier.score > 21:
+                partie = False
+            elif player1.score > 21:
+                print("vous avez perdu.")
+                partie = False
 
 
     if partie == False:
         print('Partie Finie')
         croupier.resetHand
-        player.resetHand
+        player1.resetHand
 
 
 
