@@ -8,7 +8,7 @@ class BlackJack:
     player1 = Player()
     deck = Deck()
     partie = True
-    mise = input(f"combien voulez vous miser? Votre solde actuel est de {player1.points}$.")
+    mise = int(input(f"combien voulez vous miser? Votre solde actuel est de {player1.points}$."))
     #Tests
     '''
     print('------')
@@ -37,10 +37,10 @@ class BlackJack:
             partie = False
         else:
 
+            print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|')
             tirer = ''
-            print(player1.score)
             while tirer != 'tirer' and tirer != 'coucher' and coucher == False:
-                tirer = str(input('Ecrivez /tirer/ ou /coucher/ pour tirer une carte ou vous coucher : '))
+                tirer = str(input('\nEcrivez /tirer/ ou /coucher/ pour tirer une carte ou vous coucher : '))
             if tirer == 'tirer':
                 player1.tirer(deck)
                 print(f'\nVous avez tiré {player1.getHand()[player1.lendeck-1]}, vous avez désormais {player1.score} points\n')
@@ -60,6 +60,7 @@ class BlackJack:
 
 
     if partie == False:
+        print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|')
         #Qui a gagné
         if croupier.score > 21 and player1.score < 21:
             print('Vous avez gagné !')
@@ -78,7 +79,7 @@ class BlackJack:
         coucher = False
 
 
-        restart = str(input('Voulez-vous recommencer ? oui/non '))
+        restart = str(input('Voulez-vous continuer ? oui/non '))
         if restart == 'oui':
             partie = True
         #else: qqchose
