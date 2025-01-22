@@ -8,7 +8,7 @@ class BlackJack:
     player1 = Player()
     deck = Deck()
     partie = True
-    mise = input(f"combien voulez vous miser? Votre solde actuel est de {player1.points}$.")
+    mise = int(input(f"combien voulez vous miser? Votre solde actuel est de {player1.points}$."))
     #Tests
     '''
     print('------')
@@ -62,13 +62,16 @@ class BlackJack:
     if partie == False:
         #Qui a gagné
         if croupier.score > 21 and player1.score < 21:
-            print('Vous avez gagné !')
+            player1.points += mise
+            print(f'Vous avez gagné ! Solde : {player1.points}')
         elif croupier.score <= 21 and player1.score < croupier.score:
-            print('Vous avez perdu !')
-        elif player1.score <= 21 and croupier.score < player.score:
-            print('Vous avez gagné !')
+            player1.points -= mise
+            print(f'Vous avez perdu ! Solde : {player1.points}')
+        elif player1.score <= 21 and croupier.score < player1.score:
+            player1.points += mise
+            print(f'Vous avez gagné ! Solde : {player1.points}')
         elif croupier.score == player1.score:
-            print('Egalité !')
+            print(f'Egalité ! Solde : {player1.points}')
 
         print('Partie Finie')
         croupier.resetHand
