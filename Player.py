@@ -9,6 +9,8 @@ class Player:
 
     def tirer(self,deck):
         carte = deck.defausser()
+        print(carte)
+        print(carte.value)
         self.hand.append(carte)
         self.lendeck += 1
         if carte.value != 'As':
