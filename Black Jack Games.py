@@ -8,7 +8,8 @@ class BlackJack:
     player1 = Player()
     deck = Deck()
     partie = True
-    mise = int(input(f"combien voulez vous miser? Votre solde actuel est de {player1.points}$."))
+    starting = True
+
     #Tests
     '''
     print('------')
@@ -23,70 +24,88 @@ class BlackJack:
     print('------')
     print(player1.getHand()[1])'''
 
-    #Game
-    print('\nDébut de la partie\n')
-    coucher = False
+    while True: #(step event)
 
-    while partie==True :
+        mise = int(input(f"combien voulez vous miser? Votre solde actuel est de {player1.points}$."))
 
-        if croupier.score < 17:
-            croupier.tirer(deck)
-            print(f'La croupier a tiré {croupier.getHand()[croupier.lendeck-1]}, il a désormais {croupier.score} points\n')
+        #Game
+        print('\nDébut de la partie\n')
+        coucher = False
 
-        if croupier.score > 21:
-            partie = False
-        else:
+        while partie==True :
 
-            print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|')
+            if starting == True:
+
+                croupier.tirer(deck)
+                player1.tirer(deck)
+                player1.tirer(deck)
+                print(f'|/| Player1 : {player1.getHand()[0]} // {player1.getHand()[1]} |-| Croupier : {croupier.getHand()[0]} // Carte cachée')
+                print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|\n')
+                if player1.score > 21: partie = False
+
+            if starting != True: print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|\n')
             tirer = ''
             while tirer != 'tirer' and tirer != 'coucher' and coucher == False:
                 tirer = str(input('\nEcrivez /tirer/ ou /coucher/ pour tirer une carte ou vous coucher : '))
+
             if tirer == 'tirer':
                 player1.tirer(deck)
                 print(f'\nVous avez tiré {player1.getHand()[player1.lendeck-1]}, vous avez désormais {player1.score} points\n')
             else:
-                print('Vous vous êtes couché')
+                print('Vous vous êtes couché\n')
                 coucher = True
 
             if player1.score > 21:
                 partie = False
 
-        # Cas où le joueur est couché [fin de partie]
-            if coucher == True and croupier.score >= 17:
+            # Cas où le joueur est couché [fin de partie]
+            if coucher == True and starting == False:
                 partie = False
+            elif coucher == True:
+                croupier.tirer(deck)
+                print(f'La croupier a tiré {croupier.getHand()[croupier.lendeck-1]}, il a désormais {croupier.score} points\n')
+                starting = False
+                partie = False
+            else:
+                if croupier.score < 17:
+                    croupier.tirer(deck)
+                    print(f'La croupier a tiré {croupier.getHand()[croupier.lendeck-1]}, il a désormais {croupier.score} points\n')
+                    starting = False
+
+                if croupier.score > 21:
+                    partie = False
 
 
 
 
 
-    if partie == False:
-        print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|')
-        #Qui a gagné
-        if croupier.score > 21 and player1.score < 21:
-            player1.points += mise
-            print(f'Vous avez gagné ! Solde : {player1.points}')
-        elif croupier.score <= 21 and player1.score < croupier.score:
-            player1.points -= mise
-            print(f'Vous avez perdu ! Solde : {player1.points}')
-        elif player1.score <= 21 and croupier.score < player1.score:
-            player1.points += mise
-            print(f'Vous avez gagné ! Solde : {player1.points}')
-        elif croupier.score == player1.score:
-            print(f'Egalité ! Solde : {player1.points}')
+        if partie == False:
+            print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|')
+            #Qui a gagné
+            if croupier.score > 21 and player1.score < 21:
+                player1.points += mise
+                print(f'Vous avez gagné ! Solde : {player1.points}')
+            elif croupier.score <= 21 and player1.score < croupier.score:
+                player1.points -= mise
+                print(f'Vous avez perdu ! Solde : {player1.points}')
+            elif player1.score <= 21 and croupier.score < player1.score:
+                player1.points += mise
+                print(f'Vous avez gagné ! Solde : {player1.points}')
+            elif croupier.score == player1.score:
+                print(f'Egalité ! Solde : {player1.points}')
 
-        print('Partie Finie')
-        croupier.resetHand
-        player1.resetHand
-
-
-        coucher = False
+            print('Partie Finie')
+            croupier.resetHand()
+            player1.resetHand()
+            starting = True
 
 
-        restart = str(input('Voulez-vous continuer ? oui/non '))
-        if restart == 'oui':
-            partie = True
-        #else: qqchose
+            coucher = False
 
+            restart = str(input('Voulez-vous continuer ? oui/non '))
+            if restart == 'oui':
+                partie = True
+            else: break
 
 
 
