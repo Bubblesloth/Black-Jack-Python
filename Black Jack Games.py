@@ -46,7 +46,7 @@ class BlackJack:
             if starting != True: print(f'|/| Player1 : {player1.score} pts |-| Croupier : {croupier.score} pts |/|\n')
             tirer = ''
             while tirer != 'tirer' and tirer != 'coucher' and coucher == False:
-                tirer = str(input('\nEcrivez /tirer/ ou /coucher/ pour tirer une carte ou vous coucher : '))
+                tirer = str(input('\Ecrivez /tirer/ ou /coucher/ pour tirer une carte ou vous coucher : '))
 
             if tirer == 'tirer':
                 player1.tirer(deck)
@@ -88,7 +88,7 @@ class BlackJack:
             elif croupier.score <= 21 and player1.score < croupier.score:
                 player1.points -= mise
                 print(f'Vous avez perdu ! Solde : {player1.points}')
-            elif player1.score > 21 and croupier.score < 21:
+            elif player1.score > 21 and croupier.score <= 21:
                 player1.points -= mise
                 print(f'Vous avez perdu ! Solde : {player1.points}')
             elif player1.score <= 21 and croupier.score < player1.score:
