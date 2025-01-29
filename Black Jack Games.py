@@ -88,7 +88,13 @@ class BlackJack:
             elif croupier.score <= 21 and player1.score < croupier.score:
                 player1.points -= mise
                 print(f'Vous avez perdu ! Solde : {player1.points}')
+            elif player1.score > 21 and croupier.score < 21:
+                player1.points -= mise
+                print(f'Vous avez perdu ! Solde : {player1.points}')
             elif player1.score <= 21 and croupier.score < player1.score:
+                player1.points += mise
+                print(f'Vous avez gagné ! Solde : {player1.points}')
+            elif player1.score == 21 and croupier.score > 21:
                 player1.points += mise
                 print(f'Vous avez gagné ! Solde : {player1.points}')
             elif croupier.score == player1.score:
@@ -103,9 +109,11 @@ class BlackJack:
             coucher = False
 
             restart = str(input('Voulez-vous continuer ? oui/non '))
-            if restart == 'oui':
+            if restart == 'oui' and player1.points > 0:
                 partie = True
-            else: break
+            else:
+                print(f'Fin de partie, vous finissez avec {player1.points} $')
+                break
 
 
 
