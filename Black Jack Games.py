@@ -71,6 +71,9 @@ class BlackJack:
         elif player1.score <= 21 and croupier.score < player1.score:
             player1.points += mise
             print(f'Vous avez gagné ! Solde : {player1.points}')
+        elif player1.score == 21 and croupier.score > player1.score:
+            player1.points += mise
+            print(f'Vous avez gagné ! Solde : {player1.points}')
         elif croupier.score == player1.score:
             print(f'Egalité ! Solde : {player1.points}')
 
