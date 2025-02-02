@@ -57,6 +57,8 @@ class BlackJack:
             else:
                 print('Vous vous êtes couché\n')
                 coucher = True
+                if croupier.score < 17:
+                    croupier.tirer(deck)
 
             if player1.score > 21:
                 partie = False
