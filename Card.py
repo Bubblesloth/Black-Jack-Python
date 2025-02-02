@@ -11,7 +11,7 @@ class Card:
 
     def __repr__(self):
         #return f'||{self.rank},{self.symbol},{self.value}||'
-        return f'un {self.rank} de {self.symbol}'
+        return f'{self.rank} de {self.symbol}'
 
 
 

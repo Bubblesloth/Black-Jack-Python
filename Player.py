@@ -24,7 +24,3 @@ class Player:
         self.hand = []
         self.score = 0
         self.lendeck = 0
-
-
-
-
