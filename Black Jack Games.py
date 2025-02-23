@@ -39,7 +39,7 @@ class BlackJack:
 
             if starting == True:
 
-                croupier.tirer(deck)
+                croupier.tirer(deck)#simule le premier tirage du croupier et du joueur
                 player1.tirer(deck)
                 player1.tirer(deck)
                 print(f'|/| Player1 : {player1.getHand()[0]} // {player1.getHand()[1]} |-| Croupier : {croupier.getHand()[0]} // Carte cachée')
@@ -57,8 +57,9 @@ class BlackJack:
             else:
                 print('Vous vous êtes couché\n')
                 coucher = True
-                if croupier.score < 17:
+                while croupier.score < 17:
                     croupier.tirer(deck)
+                    print(f'La croupier a tiré {croupier.getHand()[croupier.lendeck-1]}, il a désormais {croupier.score} points\n')
 
             if player1.score > 21:
                 partie = False
